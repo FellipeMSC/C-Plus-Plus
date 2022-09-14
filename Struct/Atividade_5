@@ -1,0 +1,90 @@
+#include <iostream>
+#include <windows.h>
+#include <string.h>
+ 
+using namespace std;
+
+typedef struct Casado
+{
+    int idade;
+    char nome[30], sexo;
+};
+
+typedef struct Solteiro
+{
+    int idade;
+    char nome[30], sexo;
+};
+ 
+int main() {
+
+  UINT CPAGE_UTF8 = 65001;
+  UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+  SetConsoleOutputCP(CPAGE_UTF8);
+
+    int idade;
+    char nome[30], sexo, estadoCivil;
+
+    Casado casado[2];
+    Solteiro solteiro[2];
+
+    int contC = 0, contS = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        cout << "Digite o nome: ";
+        cin.getline(nome, 30);
+        cout << "\nDigite o sexo (M / F): ";
+        cin >> sexo;
+        cout << "\nDigite a idade: ";
+        cin >> idade;
+        cout << "\nDigite o Estado Civil (C / S): ";
+        cin >> estadoCivil;
+        cin.ignore();
+        system ("cls");
+        
+        if (estadoCivil == 'C' || estadoCivil == 'c')
+        {
+            strcpy(casado[contC].nome, nome);
+            casado[contC].sexo = sexo;
+            casado[contC].idade = idade;
+            contC++;
+        }
+        else if (estadoCivil == 'S' || estadoCivil == 's')
+        {
+            strcpy(solteiro[contS].nome, nome);
+            solteiro[contS].sexo = sexo;
+            solteiro[contS].idade = idade;
+            contS++;
+        }
+    }
+
+    int contHS = 0, contMS = 0;
+    cout<<endl;
+
+    for (int i = 0; i < contS; i++)
+    {
+        cout << "\nSolteiro: " << solteiro[i].nome << endl;
+        if (solteiro[i].sexo == 'M' || solteiro[i].sexo == 'm')
+        {
+            contHS++;
+        }
+        if (solteiro[i].sexo == 'F' || solteiro[i].sexo == 'f')
+        {
+            contMS++;
+        }
+    }
+    cout << "Total Solteiros: " << contHS << "\nTotal Solteiras: " << contMS<<endl;
+
+    for (int i = 0; i < contC; i++)
+    {
+        cout<<"Casado: ";
+        cout << casado[i].nome << endl;
+    }
+    cout << "Total de Casados: " << contC;
+
+    return 0;
+  
+  cout << endl;
+  return 0;
+}

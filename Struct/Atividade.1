@@ -1,0 +1,55 @@
+#include <iostream>
+#include <windows.h>
+ 
+using namespace std;
+ 
+struct funcionarios{
+    string nome, sexo, cargo;
+    float idade, setor, nascimento, salario;
+    char cpf[15];
+};
+int main() {
+  UINT CPAGE_UTF8 = 65001;
+  UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+  SetConsoleOutputCP(CPAGE_UTF8);
+ 
+  struct funcionarios funcionarios;
+
+  cout<<"Digite seu nome: ";
+  cin>>funcionarios.nome;
+  cout << endl;
+  
+  cout<<"Digite sua idade: ";
+  cin>>funcionarios.idade;
+  cout << endl;
+  
+  cout<<"Digite o sexo (M/F): ";
+  cin>>funcionarios.sexo;
+  cout << endl;
+
+  cout<<"Digite seu CPF: ";
+  cin>>funcionarios.cpf;
+  cout << endl;
+
+  cout<<"Digite sua data de nascimento: ";
+  cin>>funcionarios.nascimento;
+  cout << endl;
+
+  cout<<"Digite o setor que você trabalha: ";
+  cin>>funcionarios.setor;
+  cout << endl;
+
+  cout<<"Digite seu cargo dentro da empresa: ";
+  cin>>funcionarios.cargo;
+  cout<<endl;
+
+  cout<<"Digite seu salario: ";
+  cin>>funcionarios.salario;
+  cout<< endl;
+  system("cls");
+    
+    cout<<"Olá "<<funcionarios.nome<<"\nSua idade é: "<<funcionarios.idade<<" anos\nSeu sexo é: "<<funcionarios.sexo<<"\nSeu CPF é: "<<funcionarios.cpf<<"\nSeu setor é: "<<funcionarios.setor<<"\nSeu cargo na empresa é: "<<funcionarios.cargo<<"\nSeu salario é: "<<funcionarios.salario;
+ 
+  cout << endl;
+  return 0;
+}

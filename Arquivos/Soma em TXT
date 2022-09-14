@@ -1,0 +1,38 @@
+#include <iostream>
+#include <windows.h>
+#include<fstream>
+ 
+using namespace std;
+
+int soma(int x, int y, int z){
+  return x + y + z;
+}
+ 
+int main() {
+  UINT CPAGE_UTF8 = 65001;
+  UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+  SetConsoleOutputCP(CPAGE_UTF8);
+ 
+ ofstream arqSaida;
+
+ arqSaida.open("soma.txt");
+ 
+ int x, y, z;
+ cout<<"Digite um número: ";
+ cin>>x;
+ cout<<"Digite um número: ";
+ cin>>y;
+ cout<<"Digite um número: ";
+ cin>>z;
+
+ arqSaida<<"Os números digitados foram: x = "<< x <<endl;
+ arqSaida<<"y = "<< y <<endl;
+ arqSaida<<"z = "<< z <<endl;
+ arqSaida<<"A soma dos números é: "<<soma(x, y, z);
+ 
+ cout<<soma(x, y, z);
+ 
+ arqSaida.close();
+  cout << endl;
+  return 0;
+}

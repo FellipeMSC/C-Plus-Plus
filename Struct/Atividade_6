@@ -1,0 +1,56 @@
+#include <iostream>
+#include <windows.h>
+#include <cstring>
+ 
+using namespace std;
+
+typedef struct{
+    char titulo[50], genero[50];
+    float duracao;
+    int ano;
+
+}filme;
+ 
+int main() {
+  UINT CPAGE_UTF8 = 65001;
+  UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+  SetConsoleOutputCP(CPAGE_UTF8);
+
+int resultado;
+char busca[50];
+filme filme[5];
+
+for(int i = 0; i < 5; i++){
+    cout<<"Digite o titulo do filme: ";
+    cin>>filme[i].titulo;
+
+    cout<<"Digite o gênero do filme: ";
+    cin>>filme[i].genero;
+
+    cout<<"Digite a duração do filme: ";
+    cin.ignore();
+    cin>>filme[i].duracao;
+
+    cout<<"Digite o ano do lançamento do filme: ";
+    cin.ignore();
+    cin>>filme[i].ano;
+
+    system("cls");
+}
+
+cout<<endl;
+
+for(int i = 0; i < 5; i++){
+    resultado = strcmp("comedia", filme[i].genero);
+    if(resultado == 0){
+        cout <<"O nome do filme é: "<<filme[i].titulo <<endl;
+        cout<<"O gênero do filme é: "<<filme[i].genero <<endl;
+        cout<<"A duração do filme é: "<<filme[i].duracao <<" horas"<<endl;
+        cout<<"O ano de lançamento do filme foi: "<<filme[i].ano <<endl;
+        cout<<endl;
+    }
+}
+ 
+  cout << endl;
+  return 0;
+}

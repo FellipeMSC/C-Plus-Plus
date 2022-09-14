@@ -1,0 +1,99 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+typedef struct Endereco {
+    
+    char rua[30], bairro[30], cep[30], cidade[30], estado[30];
+
+};
+
+typedef struct Cadastro {
+
+    int idade;
+    char nome[30], rg[15], cpf[15], estadoCivil[8], telefone[15], sexo;
+    Endereco endereco;
+    float salario;
+
+};
+
+int main() {
+
+    Cadastro cadastros[2];
+    int Midade;
+    char maior[30];
+    char identidade[15];
+
+    for(int i = 0; i < 5; i++){
+
+        cout << "Digite seu nome: ";
+        cin.getline(cadastros[i].nome, 30);
+
+        cout << "\nDigite sua rua: ";
+        cin.getline(cadastros[i].endereco.rua, 30);
+
+        cout << "\nDigite seu bairro: ";
+        cin.getline(cadastros[i].endereco.bairro, 30);
+
+        cout << "\nDigite sua cidade: ";
+        cin.getline(cadastros[i].endereco.cidade, 30);
+
+        cout << "\nDigite seu estado: ";
+        cin.getline(cadastros[i].endereco.estado, 30);
+
+        cout << "\nDigite seu CEP: ";
+        cin.getline(cadastros[i].endereco.cep, 30);
+
+        cout << "\nDigite seu salário: ";
+        cin >> cadastros[i].salario;
+        cin.ignore();
+
+        cout << "\nDigite seu RG: ";
+        cin.getline(cadastros[i].rg, 15);
+
+        cout << "\nDigite seu CPF: ";
+        cin.getline(cadastros[i].cpf, 15);
+
+        cout << "\nDigite seu estado civil (C / S): ";
+        cin.getline(cadastros[i].estadoCivil, 15);
+
+        cout << "\nDigite seu telefone: ";
+        cin.getline(cadastros[i].telefone, 15);
+
+        cout << "\nDigite sua idade: ";
+        cin >> cadastros[i].idade;
+
+        cout << "\nDigite seu sexo (M / F): ";
+        cin >> cadastros[i].sexo;
+        cin.ignore();
+        system ("cls");
+    }
+
+    cin.getline(identidade, 15);
+
+    Midade = cadastros[0].idade;
+
+    for(int i = 0; i < 5; i++) {
+        if(cadastros[i].idade > Midade) {
+            Midade = cadastros[i].idade;
+            cout<<"\nMaior idade: ";
+            strcpy(maior, cadastros[i].nome);
+        }
+        if(cadastros[i].sexo == 'M' || cadastros[i].sexo == 'm') {
+            cout<<"\nSexo Masculino: ";
+            cout << cadastros[i].nome << endl;
+        }
+        if(cadastros[i].salario > 1212.0) {
+            cout<<"\nSalario maior que 1212,00: ";
+            cout << cadastros[i].nome << endl;
+        }
+        if(strcmp(cadastros[i].rg,identidade) == 0) {
+            cout<<"\nIdentidade igual: ";
+            cout << cadastros[i].nome << endl;
+        }
+    }
+    cout << maior;
+
+    return 0;
+}

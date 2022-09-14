@@ -1,0 +1,74 @@
+#include <iostream>
+#include <windows.h>
+#include <cstring>
+ 
+using namespace std;
+
+typedef struct{
+    char bairro[50], rua[50];
+    int num;
+
+}enderecos;
+
+typedef struct{
+    char nome[50];
+    int telefone;
+    enderecos endereco;
+    
+}cadastros;
+
+int main() {
+  UINT CPAGE_UTF8 = 65001;
+  UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+  SetConsoleOutputCP(CPAGE_UTF8);
+ 
+cadastros cadastro[5], aux[1];
+
+
+for(int i = 0; i < 5; i++){
+    cout<<"Digite o seu nome: ";
+    cin.ignore();
+    cin>>cadastro[i].nome;
+
+    cout<<"Digite seu telefone: ";
+    cin.ignore();
+    cin>>cadastro[i].telefone;
+
+    cout<<"Digite o bairro: ";
+    cin.ignore();
+    cin>>cadastro[i].endereco.bairro;
+
+    cout<<"Digite a rua: ";
+    cin.ignore();
+    cin>>cadastro[i].endereco.rua;
+
+    cout<<"Digite o número de sua casa: ";
+    cin.ignore();
+    cin>>cadastro[i].endereco.num;
+
+}
+
+cadastros aux1;
+
+for(int i = 0; i < 5; i++) {
+for(int j = 0; j < 4; j++) {
+    
+    if(strcmp(cadastro[j+1].nome,cadastro[j].nome) < 0) {
+        aux1 = cadastro[j];
+        cadastro[j] = cadastro[j+1];
+        cadastro[j+1] = aux1;
+    }
+}
+}
+
+for(int i = 0; i < 5; i++){
+    cout<<"Nome: "<<cadastro[i].nome<<endl;
+    cout<<"Telefone: "<<cadastro[i].telefone<<endl;
+    cout<<"Bairro: "<<cadastro[i].endereco.bairro<<endl;
+    cout<<"Rua: "<<cadastro[i].endereco.rua<<endl;
+    cout<<"Número: "<<cadastro[i].endereco.num<<endl;
+}
+ 
+  cout << endl;
+  return 0;
+}

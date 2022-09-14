@@ -1,0 +1,46 @@
+#include <iostream>
+#include <windows.h>
+#include<fstream>
+ 
+using namespace std;
+
+int num(int a, int b, int c){
+    
+    return a + b + c;
+}
+ 
+int main() {
+  UINT CPAGE_UTF8 = 65001;
+  UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+  SetConsoleOutputCP(CPAGE_UTF8);
+
+    ofstream arqSaida;
+    ofstream arqExit;
+
+    int a, b, c;
+    
+    arqSaida.open("numeros.txt");
+    arqExit.open("soma.dat");
+
+    cout<<"Digite o valor de A: ";
+    cin>>a;
+    cout<<"Digite o valor de B: ";
+    cin>>b;
+    cout<<"Digite o valor de C: ";
+    cin>>c;
+
+    arqSaida<<"Os números digitados foram: "<<endl;
+    arqSaida<<"O valor de A é: "<<a<<endl;
+    arqSaida<<"O valor de B é: "<<b<<endl;
+    arqSaida<<"O valor de C é: "<<c<<endl;
+    arqSaida.close();
+
+    arqExit<<"A soma dos numeros é: "<<num(a, b, c);
+
+    cout<<num(a,b,c);
+    arqExit.close();
+
+
+  cout << endl;
+  return 0;
+}

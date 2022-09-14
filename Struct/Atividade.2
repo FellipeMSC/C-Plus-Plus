@@ -1,0 +1,68 @@
+#include <iostream>
+#include <windows.h>
+ 
+using namespace std;
+
+typedef struct{
+    string marca;
+    float preco;
+    int ano;
+
+}agencia;
+
+int main() {
+  UINT CPAGE_UTF8 = 65001;
+  UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+  SetConsoleOutputCP(CPAGE_UTF8);
+
+  float gasto;
+  agencia carro[5];
+
+  for(int i = 0; i < 5; i++){
+    carro[i].marca = " ";
+    carro[i].preco = 0.0;
+    carro[i].ano = 0;
+  }
+
+  for(int i = 0; i < 5; i++){
+    
+    system("cls");
+    cout<<"Digite a marca do carro: ";
+    cin>>carro[i].marca;
+
+    cout<<"Digite o ano do carro: ";
+    cin>>carro[i].ano;
+
+    cout<<"Digite o preço do carro: ";
+    cin>>carro[i].preco;
+  }
+
+  for(int i = 0; i < 5; i++){
+    cout << endl;
+    cout<<"A marca do carro é: "<<carro[i].marca;
+    cout << endl;
+    cout<<"O ano do carro é: "<<carro[i].ano;
+    cout << endl;
+    cout<<"O preço do carro é: "<<carro[i].preco;
+    cout << endl;
+  }
+    cout << endl;
+    cout<<"Digite o valor que quer gastar no carro: ";
+    cin>>gasto;
+
+    for(int i = 0; i < 5; i ++){
+        if(gasto >= carro[i].preco){
+            cout << endl;
+            cout<<"Os carros que você pode comprar são: ";
+            cout << endl;
+            cout<<"A marca do carro é: "<<carro[i].marca;
+            cout << endl;
+            cout<<"O ano do carro é: "<<carro[i].ano;
+            cout << endl;
+            cout<<"O preço do carro é: "<<carro[i].preco;
+            cout << endl;
+        }
+    }
+  cout << endl;
+  return 0;
+}

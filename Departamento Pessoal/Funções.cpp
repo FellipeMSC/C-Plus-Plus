@@ -1,5 +1,5 @@
 #include <iostream>
-#include "TrbP.cpp"
+#include "Lista.hpp"
 
 #define maxtam 5
 #define inicio 1
@@ -256,6 +256,6 @@ void ImprimeContraCheque(TipoLista *lista){//Imprimir o contra-cheque dos funcio
         INSS = bruto * 0.085;
         liquido = bruto - INSS - imp;
 
-        cout<<"Informações do funcionário \nHoras de trabalho: "<<caux<<"\nSalario bruto: "<<bruto<<"\nImposto: "<<imp<<"\nINSS: ";
+        cout<<"Informações do funcionário \nHoras de trabalho: "<<caux<<"\nSalario bruto: "<<bruto<<"\nImposto: "<<imp<<"\nINSS: <<endl";
     }
 }

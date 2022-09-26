@@ -1,8 +1,8 @@
 #include <iostream>
 #include <windows.h>
 #include <cstring>
-#include "TrbP.cpp"
-#include "Funcoes.cpp"
+#include "Lista.hpp"
+#include "Funções.cpp"
 
 using namespace std;
 

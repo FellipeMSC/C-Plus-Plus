@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <cstring>
 #include "Lista.hpp"
-#include "Funções.cpp"
+#include "Funcoes.cpp"
 
 using namespace std;
 

@@ -64,6 +64,7 @@ void ImprimeItem(TipoLista *lista, int id){
         if (aux->item.id == id){
             cout<<"Nome: "<< aux->item.nome <<" \nID: "<<aux->item.id<<" \nCidade: "<<aux->item.endereco.cidade<<" \nBairro: "<<aux->item.endereco.bairro<<endl;
             cout<<"Rua: "<<aux->item.endereco.rua<<" \nNumero da casa: "<<aux->item.endereco.numcasa<<" \nDependentes: "<<aux->item.dependentes<<endl;
+
             ImprimeListaSeq(aux->item.projetos);
             break;
         }
@@ -257,5 +258,27 @@ void ImprimeContraCheque(TipoLista *lista){//Imprimir o contra-cheque dos funcio
         liquido = bruto - INSS - imp;
 
         cout<<"Informações do funcionário \nHoras de trabalho: "<<caux<<"\nSalario bruto: "<<bruto<<"\nImposto: "<<imp<<"\nINSS: <<endl";
+    }
+}
+
+void Leitura_Arquivo(TipoLista *lista) // Lê o arquivo e caso exista a função inclui todos os funcionarios na bin.
+{
+    FILE *file = fopen("Departamento_Pessoal.bin", "r");
+    TipoItem item;
+    if (file != NULL){
+        while (fread(&item, sizeof(TipoItem), 1, file)){
+
+            InsereListaUltimo(lista, &item);
+        }
+    }
+}
+
+void Inclui_Arquivo(TipoLista *lista) // Salva os funcionários dentro do arquivo bin.
+{
+    FILE *file = fopen("Departamento_Pessoal.bin", "w");
+    TApontador aux = lista->primeiro->prox;
+    while (aux != NULL){
+        fwrite(&aux->item, sizeof(TipoItem), 1, file);
+        aux = aux->prox;
     }
 }

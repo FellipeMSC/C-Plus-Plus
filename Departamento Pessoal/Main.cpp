@@ -1,8 +1,9 @@
 #include <iostream>
 #include <windows.h>
 #include <cstring>
+#include <fstream>
 #include "Lista.hpp"
-#include "Funcoes.cpp"
+#include "func.cpp"
 
 using namespace std;
 
@@ -35,7 +36,8 @@ int main() {
     TipoLista lista;
     TipoItem func;
     int op, d, p, ret, id, opp;
-
+    
+     Leitura_Arquivo(&lista);
 
     CriaListaVazia(&lista); //Cria uma lista de funcionário para poder serem cadastrados.
 
@@ -190,6 +192,8 @@ do{
     }       
 
 }while(op != 7);
+
+     Inclui_Arquivo(&lista);
 
 return 0;
 }

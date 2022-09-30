@@ -21,6 +21,13 @@ void CriaListaVazia(TipoLista *lista){//Cria uma lista sem cadastros.
     
 }
 
+void CriaListaVaziaSeq(TListaSequencial *lista){
+    
+    lista->primeiro = 0;
+    lista->ultimo = lista->primeiro;
+    lista->tamanho = lista->primeiro;
+}
+
 bool VerificaListaVazia(TipoLista *lista){//Verifica se a lista possui ou não possui cadastros.
     return (lista->primeiro == lista->ultimo);
 }
@@ -243,22 +250,29 @@ void ImprimeContraCheque(TipoLista *lista){//Imprimir o contra-cheque dos funcio
 
     float INSS = 0.0, imp = 0.0,bruto = 0.0, liquido = 0.0, caux = 0.0;
     
-    while(aux != NULL){
-
+    while(aux){
+        
+        cout<<"Informações do funcionário"<<endl;
         cout<<"Funcionário: "<<aux->item.nome<<" \nID: "<<aux->item.id;
 
-        for(int i = 0; i < aux->item.projetos.tamanho; i++){ 
+        for(int i = 0; i < aux->item.projetos.ultimo; i++){ 
             
-            caux += aux->item.projetos.item[i].horas;
+            caux = caux + aux->item.projetos.item[i].horas;
         }
 
-        bruto = 45 * caux + aux->item.dependentes * 35;
+        bruto = (45 * caux) + (aux->item.dependentes * 35);
         imp = bruto * 0.15;
         INSS = bruto * 0.085;
-        liquido = bruto - INSS - imp;
+        liquido = bruto - (INSS - imp);
 
-        cout<<"Informações do funcionário \nHoras de trabalho: "<<caux<<"\nSalario bruto: "<<bruto<<"\nImposto: "<<imp<<"\nINSS: <<endl";
+        cout<<"\nHoras de trabalho: "<<caux<<"\nSalario bruto: "<<bruto<<"\nImposto: "<<imp<<"\nINSS: "<< INSS <<"\nSalario liquido: " << liquido<<endl;
+        
+        INSS = 0.0, imp = 0.0,bruto = 0.0, liquido = 0.0, caux = 0.0;
+        
+        aux = aux->prox;
+        cout<<endl;
     }
+    system("pause");
 }
 
 void Leitura_Arquivo(TipoLista *lista) // Lê o arquivo e caso exista a função inclui todos os funcionarios na bin.

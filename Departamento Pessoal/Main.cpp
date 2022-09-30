@@ -3,7 +3,7 @@
 #include <cstring>
 #include <fstream>
 #include "Lista.hpp"
-#include "func.cpp"
+#include "Funcoes.cpp"
 
 using namespace std;
 
@@ -59,26 +59,26 @@ do{
             break;
         }//Verifica se a lista foi criada ou não.
         
-        cout<<"Utilizando letras, digite o nome do funcionário: ";
+        cout<<"Digite o nome do funcionário: ";
         cin>>func.nome;
         
-        cout<<"Utilizando números, digite o ID do funcionário: ";
+        cout<<"Digite o ID do funcionário (Apenas numeros): ";
         cin>>func.id;
         cin.ignore();
         
-        cout<<"Utilizando letras, digite sua cidade: ";
+        cout<<"Digite sua cidade: ";
         cin.getline(func.endereco.cidade, 40);
         
-        cout<<"Utilizando letras, digite seu bairro: ";
+        cout<<"Digite seu bairro: ";
         cin.getline(func.endereco.bairro, 40);
         
-        cout<<"Utilizando letras, digite sua rua: ";
+        cout<<"Digite sua rua: ";
         cin.getline(func.endereco.rua, 40);
         
-        cout<<"Utilizando números, digite o numero de sua casa: ";
+        cout<<"Digite o numero de sua casa (Apenas numeros): ";
         cin>>func.endereco.numcasa;
         
-        cout<<"Utilizando números, digite a quantidade de dependentes: ";
+        cout<<"Digite a quantidade de dependentes (Apenas numeros): ";
         cin>>func.dependentes;
 
         system("cls");
@@ -86,23 +86,26 @@ do{
         cout<<"1. Sim\n2. Não\nDeseja cadastrar um projeto: ";
         cin>>d;
 
+        CriaListaVaziaSeq(&func.projetos);
+
         do{
             if(d == 1){
                 TProjetos projeto;
                 
                 system("cls");
                 
-                cout<<"Utilizando letras, digite o nome do projeto: ";
+                cout<<"Digite o nome do projeto: ";
                 cin>>projeto.nome;
                 
-                cout<<"Utilizando números, digite as horas trabalhadas nesse projeto: ";
+                cout<<"Digite as horas trabalhadas nesse projeto (Apenas numeros): ";
                 cin>>projeto.horas;
                 
-                cout<<"Utilizando números, digite o codigo desse projeto: ";
+                cout<<"Digite o codigo desse projeto (Apenas numeros): ";
                 cin>>projeto.codigo;
                 
                 InsereItem(&func.projetos, projeto);//Insere um projeto cadastrado para o funcionário
-            
+                system("cls");
+
                 cout<<"1. Sim \n2. Não \nDeseja cadastrar outro projeto: ";
                 cin>>d;
             }
@@ -122,8 +125,24 @@ do{
 
         cout << "Informe o Id do funcionario para incluir projeto: ";
         cin >> id;
+
+        system("cls");
+
+        TApontador proj;
+        TProjetos projeto;
         
-        CadastraProjeto(&lista, id);//Cadastra um projeto caso o funcionário queira e verifica se o ID do funcionário é compativel com algum ID ja cadastrado.
+        proj = PesquisaItemTwo(&lista, id);
+        
+        cout<<"Digite o nome do projeto: ";
+        cin>>projeto.nome;
+                
+        cout<<"Digite as horas trabalhadas nesse projeto (Apenas numeros): ";
+        cin>>projeto.horas;
+                
+        cout<<"Digite o codigo desse projeto (Apenas numeros): ";
+        cin>>projeto.codigo;
+        
+        InsereItem(&proj->item.projetos, projeto);//Cadastra um projeto caso o funcionário queira e verifica se o ID do funcionário é compativel com algum ID ja cadastrado.
         break;
 
         case 3:
@@ -150,8 +169,9 @@ do{
         }
 
         
-        cout<<"1. Excluir todos os funcionarios1 \n2. Excluir apenas um funcionário \nDigite uma opção: ";
+        cout<<"1. Excluir todos os funcionarios \n2. Excluir apenas um funcionário \nDigite uma opção: ";
         cin>>opp;//Selecionar uma opção de exclusão de funcionários sem projetos.
+        system("cls");
 
         ExcluirFuncSP(&lista, opp);//Exclui um ou todos funcionários caso ele não tenha projetos.
         break;
@@ -193,7 +213,8 @@ do{
 
 }while(op != 7);
 
-     Inclui_Arquivo(&lista);
+    //  Inclui_Arquivo(&lista);
 
 return 0;
 }
+

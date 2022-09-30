@@ -69,5 +69,7 @@ void ExcluirFuncSP(TipoLista *lista, int opp);
 void ImprimeContraCheque(TipoLista *lista);
 void Inclui_Arquivo(TipoLista *lista);
 void Leitura_Arquivo(TipoLista *lista);
+void CriaListaVaziaSeq(TListaSequencial *lista);
 
  #endif
+

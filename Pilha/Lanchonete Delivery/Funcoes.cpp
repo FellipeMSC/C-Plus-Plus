@@ -137,3 +137,26 @@ void LancarEntrega(stack <Pedido> *PilhaAux){//Envia o pedido mais proximo.
     
     cout<<"Pedido enviado com sucesso"<<endl;
 }
+
+void lerArquivo(stack <Pedido> *PilhaAux, int *id) {
+    FILE *file = fopen("lanchonete.bin", "r");
+    Pedido pedido;
+    if(file != NULL) {
+        while(fread(&pedido, sizeof(Pedido), 1, file)) {
+            if(pedido.codigo > *id) {
+                *id = pedido.codigo;
+            }
+            PilhaAux->push(pedido);
+        }
+    }
+}
+
+void salvarArquivo(stack <Pedido> *PilhaAux) {
+    FILE *file = fopen("lanchonete.bin","w");
+    Pedido pedido;
+    while(!PilhaAux->empty()) {
+        pedido = PilhaAux->top();
+        PilhaAux->pop();
+        fwrite(&pedido, sizeof(Pedido), 1, file);
+    }
+}

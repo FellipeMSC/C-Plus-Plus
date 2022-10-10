@@ -16,8 +16,11 @@ int main() {
     
     stack<Pedido> PilhaPedido, PilhaAux;
     
-    int op, opp, codigo = 1, id;
+    int op, opp, codigo = 0, id;
     float cont = 0.0;
+    
+    lerArquivo(&PilhaPedido, &codigo);
+    codigo++;
     
     Pedido pedido;
     Pedido aux;
@@ -138,16 +141,7 @@ int main() {
 
   }while(op != 7); //Estrutura de repetição até o usuario pedir pra sair.  
   
-// FILE* ptr;
-
-// if ((ptr = fopen("Lanchonete.bin", "w")) == NULL) {
-//     puts("Erro ao abrir o arquivo!");
-//     exit(1);
-// }
-
-// fwrite(&Pedido, sizeof(struct Pedido), 1, ptr);
-
-//   fclose(ptr);
+salvarArquivo(&PilhaPedido);
   
   cout << endl;
   return 0;

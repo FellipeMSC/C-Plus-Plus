@@ -20,5 +20,7 @@ void Cardapio();
 void PesquisaItem(stack <Pedido> pesquisa, int id, string nome[], float preco[]);
 void OrdenarPedido(stack <Pedido> *ordem, string nome[], float preco[]);
 void LancarEntrega(stack <Pedido> *PilhaPedido);
+void lerArquivo(stack <Pedido> *PilhaAux, int *id);
+void salvarArquivo(stack <Pedido> *PilhaAux);
 
 #endif

@@ -1,0 +1,32 @@
+#include <iostream>
+#include <windows.h>
+#include <queue>
+#include "Funcoes.hpp"
+#include "Funcoes.cpp"
+
+using namespace std;
+ 
+int main() {
+  UINT CPAGE_UTF8 = 65001;
+  UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+  SetConsoleOutputCP(CPAGE_UTF8);
+  
+  int op;
+ 
+  do{
+  
+  Menu();
+  cout<<"\nSelecione uma opção: ";
+  cin>>op;
+  system("cls");
+  
+  switch(op){
+  
+    case 1: 
+  
+  }
+  }while(op != 6);
+ 
+  cout << endl;
+  return 0;
+}

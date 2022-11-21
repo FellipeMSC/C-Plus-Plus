@@ -1,0 +1,75 @@
+#include <iostream>
+#include <windows.h>
+#include <queue>
+#include "Funcoes.hpp"
+#include "Funcoes.cpp"
+
+using namespace std;
+ 
+int main() {
+  UINT CPAGE_UTF8 = 65001;
+  UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+  SetConsoleOutputCP(CPAGE_UTF8);
+  
+  int op;
+  TipoFila fila;
+  Paciente paciente;
+  DadosUPA upa;
+  InicializaFila(&fila);
+  Triagem salvaresposta;
+ 
+  do{
+  
+  Menu();
+  cout<<"\nSelecione uma opção: ";
+  cin>>op;
+  system("cls");
+  
+  switch(op){
+  
+    case 1:
+
+    cout<<"|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|"<<endl;
+    cout<<"|             REGISTRO DE MEDICOS            |"<<endl;
+    cout<<"|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|"<<endl;
+    Cadastro_medico(upa.medico);
+    cout<<"\nMedico Disponivel = 1\nMedico Indisponivel = 0"<<endl;
+    system("pause");
+    system("cls");
+    break;
+
+    case 2: 
+
+    cout<<"|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n";
+    cout<<"|               TRIAGEM                  |\n";
+    cout<<"|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n\n";
+    cout << "Emergencia(VERMELHO)______________ Atendimento imediato.\n";
+    cout << "Muito Urgente(LARANJA)___________ Atendimento em ate 10 min. \n";
+    cout << "Urgente(AMARELO)_________________ Atendimento em ate 60 min. \n";
+    cout << "Pouco Urgente(VERDE)___________ Atendimento em ate 120 min. \n";
+    cout << "Não Urgente(AZUL)_____________ Atendimento em ate 240 min. \n\n";
+    CadastraPaciente(&fila);
+    system("cls");
+    break;
+
+    case 3: 
+
+    AtualizaMedico(&fila, &upa);
+    break;
+
+    case 4: 
+
+    cout<<"|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|"<<endl;
+    cout<<"|            LISTA DE ATENDIMENTO            |"<<endl;
+    cout<<"|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|"<<endl;
+    ImprimeFila(&fila);
+    system("pause");
+    system("cls");  
+    break;
+
+    }
+  }while(op != 5);
+ 
+  cout << endl;
+  return 0;
+}
